@@ -1,0 +1,335 @@
+@import "print";
+
+// Extra small screen / phone
+//** Deprecated `$screen-xs` as of v3.0.1
+$screen-xs:                  480px !default;
+//** Deprecated `$screen-xs-min` as of v3.2.0
+$screen-xs-min:              $screen-xs !default;
+//** Deprecated `$screen-phone` as of v3.0.1
+$screen-phone:               $screen-xs-min !default;
+
+// Small screen / tablet
+//** Deprecated `$screen-sm` as of v3.0.1
+$screen-sm:                  768px !default;
+$screen-sm-min:              $screen-sm !default;
+//** Deprecated `$screen-tablet` as of v3.0.1
+$screen-tablet:              $screen-sm-min !default;
+
+// Medium screen / desktop
+//** Deprecated `$screen-md` as of v3.0.1
+$screen-md:                  992px !default;
+$screen-md-min:              $screen-md !default;
+//** Deprecated `$screen-desktop` as of v3.0.1
+$screen-desktop:             $screen-md-min !default;
+
+// Large screen / wide desktop
+//** Deprecated `$screen-lg` as of v3.0.1
+$screen-lg:                  1200px !default;
+$screen-lg-min:              $screen-lg !default;
+//** Deprecated `$screen-lg-desktop` as of v3.0.1
+$screen-lg-desktop:          $screen-lg-min !default;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - 1) !default;
+$screen-sm-max:              ($screen-md-min - 1) !default;
+$screen-md-max:              ($screen-lg-min - 1) !default;
+
+$blue-hs: #41b3f9;
+$menu-color: #54667a;
+
+$hover-pink-color: #f9efef;
+body{
+    color:#333333;
+    font-family: 'Open Sans', sans-serif;
+}
+/*logo*/
+.logo-mini{
+    img{width: 100%}
+}
+.logo-lg{
+    height:100%;
+    img{width: 150px;height: 100%;display: block;margin: 0 auto;}
+}
+.main-footer {
+    background: #fff;
+    padding: 9px 15px;
+    color: #58666e;
+    border-top: none;
+    font-size: 12px;
+}
+ul.pagination{margin: 0;}
+/*select 2*/
+select.input-sm + .select2-container--default .select2-selection--single,
+select.input-sm + .select2-selection .select2-selection--single{
+    padding: 4px 12px;
+    height: 30px;
+    font-size: 12px;
+}
+.input-group{
+    @media screen and (max-width: $screen-xs-max) {
+        max-width:100%;
+        .select2{
+            display: table-cell;
+        }
+    }
+}
+/*style table th vertical middle*/
+.table.table-th-middle > thead > tr > th,
+.table.table-th-middle > tbody > tr > th,
+.table.table-th-middle > tr > th{vertical-align: middle}
+/*table hover*/
+.hover-pink.table-hover > tbody > tr:hover{
+    background-color: $hover-pink-color;
+}
+
+.label-required:before{
+    content: "*";
+    color: red;
+}
+@media screen and (max-width: $screen-xs-max) {
+    .skin-green-light .main-header .navbar {
+        background-color: #005a31;
+    }
+    .skin-blue-light .main-header .navbar {
+        background-color: darken(#3c8dbc,10%);
+    }
+    .skin-black-light{
+        .main-header{
+            > .logo{
+                background-color: $blue-hs;
+            }
+        }
+    }
+}
+@media screen and (min-width: $screen-sm-min) {
+    .main-header{
+        .sidebar-toggle{
+            margin-left: -50px;
+            border-left: 1px solid #eee;
+            padding: 15px 18px;
+        }
+    }
+    .main-header{
+        .logo{
+            .logo-lg,
+            .logo-mini{
+                color: $blue-hs;
+            }
+        }
+    }
+}
+/*select 2*/
+select.input-sm + .select2-container--default .select2-selection--single,
+select.input-sm + .select2-selection .select2-selection--single{
+    padding: 4px 12px;
+    height: 30px;
+    font-size: 12px;
+}
+
+.input-group{
+    @media screen and (max-width: $screen-xs-max) {
+        max-width:100%;
+        .select2{
+            display: table-cell;
+        }
+    }
+}
+/*style table th vertical middle*/
+.table.table-th-middle > thead > tr > th,
+.table.table-th-middle > tbody > tr > th,
+.table.table-th-middle > tr > th{vertical-align: middle}
+/*table hover*/
+.hover-pink.table-hover > tbody > tr:hover{
+    background-color: $hover-pink-color;
+}
+.btn-version{
+    height: 32px;
+    margin-top: 11px;
+    line-height: 14px;
+    width: 110px;
+    white-space: normal;
+    margin-right: 15px;
+    position: relative;
+    .label{
+        position: absolute;
+        top: -9px;
+        right: -9px;
+    }
+}
+.sidebar-menu{
+    >li{
+        border-left: 2px solid transparent;
+    }
+    >li.active{
+        border-left-style: solid;
+    }
+}
+.language{
+    .fa{
+        font-size:12px;
+    }
+}
+.main-sidebar, .left-side{
+    padding-top: 52px;
+}
+
+.skin-black-light {
+    .wrapper, .main-sidebar, .left-side {
+        background-color: #ffffff;
+    }
+    .main-sidebar{
+        box-shadow: 1px 0px 1px rgba(0, 0, 0, 0.05);
+    }
+    .content-wrapper,
+    .main-footer{
+        border-left: none;
+    }
+    .sidebar {
+        a {
+            color: $menu-color;
+        }
+    }
+    .main-header {
+        .navbar {
+            .nav {
+                > li > a {
+                    color: $menu-color;
+                }
+                > li > a:hover,
+                > li > a:active,
+                > li > a:focus,
+                .open > a,
+                .open > a:hover,
+                .open > a:focus,
+                > .active > a {
+                    background: $blue-hs;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .sidebar-menu {
+        > li > a {
+            font-weight: 300 !important;
+            > span {
+                padding-left: 7px;
+            }
+        }
+        > li:hover > a,
+        > li.active > a {
+            color: $menu-color;
+            background: #f4f4f5;
+            background: rgba(0, 0, 0, 0.07);
+        }
+        > li.selected {
+            border-left-color: $blue-hs;
+            > a {
+                font-weight: 600 !important;
+            }
+        }
+        .treeview-menu{
+            background: #ffffff!important;
+            padding-left: 20px;
+            padding-top: 7px;
+            > li > a {
+                color: $menu-color;
+                padding: 10px 5px 10px 15px;
+                > .fa {
+                    margin-right: 7px;
+                }
+            }
+            > li > a:hover,
+            > li.selected > a,
+            > li.active > a{
+                color: $blue-hs;
+            }
+        }
+    }
+}
+.dropdown-user {
+    > li > a {
+        padding: 9px 20px;
+        color: #333;
+    }
+    .dw-user-box {
+        padding: 15px;
+        .u-img {
+            width: 80px;
+            display: inline-block;
+            vertical-align: top;
+            img {
+                width: 100%;
+                border-radius: 5px;
+            }
+        }
+        .u-text {
+            display: inline-block;
+            padding-left: 10px;
+            h4 {
+                margin: 0px;
+            }
+            p {
+                margin-bottom: 3px;
+            }
+        }
+    }
+}
+.toggle-light .toggle-on, .toggle-light .toggle-select .toggle-inner .active{
+    background: #7ace4c;
+}
+.inputfile-wrap {
+    input[type=file] {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        opacity: 0;
+        width: 100%;
+    }
+    .input-group-btn {
+        position: relative;
+    }
+}
+.imgprev-wrap {
+    background: #f7f7f7;
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px dashed #ccc;
+    border-radius: 1px;
+    width: 100%;
+    position: relative;
+    img {
+        width: 20%;
+    }
+    i.fa.fa-trash {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 10px;
+        margin: auto;
+        height: 28px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+}
+
+//Login, register
+.login-page,.register-page{
+    background: url(../img/auth-background.jpg) no-repeat 100% 100% !important;
+}
+.register-box,
+.login-box{
+    width: 100%;
+    padding: 7% 15px;
+    margin:0;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.5);/*#F4F6F9;*/
+}
+.register-box-body,
+.login-box-body {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 0 auto;
+}

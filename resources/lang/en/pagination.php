@@ -15,5 +15,6 @@ return [
 
     'previous' => '&laquo; Previous',
     'next' => 'Next &raquo;',
+    'perpage_showing' => 'Showing :To to :From of :Total entries',
 
 ];

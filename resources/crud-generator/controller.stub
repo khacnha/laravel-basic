@@ -7,6 +7,7 @@ use DummyRootNamespaceHttp\Controllers\Controller;
 
 use DummyRootNamespace{{modelNamespace}}{{modelName}};
 use Illuminate\Http\Request;
+use Session;
 
 class DummyClass extends Controller
 {
@@ -18,7 +19,7 @@ class DummyClass extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = {{pagination}};
+        $perPage = Config("settings.perpage");
 
         if (!empty($keyword)) {
             ${{crudName}} = {{modelName}}::{{whereSnippet}}latest()->paginate($perPage);

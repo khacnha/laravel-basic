@@ -57,7 +57,7 @@ class LoginController extends Controller
      */
     public function username()
     {
-        return config('auth.providers.users.field', 'email');
+        return config('auth.providers.users.field','email');
     }
 
     /**
@@ -68,16 +68,15 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        if ($this->username() === 'email') {
-            return $this->attemptLoginAtAuthenticatesUsers($request);
-        }
-        if (! $this->attemptLoginAtAuthenticatesUsers($request)) {
+        if ($this->username() === 'email') return $this->attemptLoginAtAuthenticatesUsers($request);
+        if ( ! $this->attemptLoginAtAuthenticatesUsers($request)) {
             return $this->attempLoginUsingUsernameAsAnEmail($request);
         }
         return false;
     }
 
     /**
+     * Chi ap dung voi dang nhap voi email
      * Attempt to log the user into application using username as an email.
      *
      * @param \Illuminate\Http\Request $request
@@ -86,8 +85,20 @@ class LoginController extends Controller
     protected function attempLoginUsingUsernameAsAnEmail(Request $request)
     {
         return $this->guard()->attempt(
-            ['email' => $request->input('username'), 'password' => $request->input('password')],
-            $request->has('remember')
-        );
+            ['email' => $request->input('username'), 'password' => $request->input('password'), 'active' => Config("settings.active")],
+            $request->has('remember'));
     }
+
+	/**
+	 * Chi ap dung khi login voi username
+	 * Add condition login: active = 1
+	 * @param $request
+	 * @return array
+	 */
+	public function credentials($request)
+	{
+		$credentials = $request->only($this->username(), 'password');
+		return array_add($credentials, 'active', Config("settings.active"));
+	}
+
 }

@@ -1,5 +1,15 @@
-%%formFieldsHtml%%
-
-<div class="form-group">
-    {!! Form::submit($formMode === 'edit' ? 'Update' : 'Create', ['class' => 'btn btn-primary']) !!}
+<div class="box-body">
+    @if ($errors->any())
+	    <div class="alert alert-danger">
+	        @foreach ($errors->all() as $error)
+	            <p><i class="fa fa-fw fa-check"></i> {{ $error }}</p>
+	        @endforeach
+	    </div>
+	@endif
+	%%formFieldsHtml%%
+</div>
+<div class="box-footer">
+    {!! Form::submit($formMode === 'edit' ? __('message.update') : __('message.save'), ['class' => 'btn btn-primary']) !!}
+    <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" class="btn btn-default">{{ __('message.close') }}</a>
+     {{--{!! Form::submit(($formMode === 'edit' ? __('message.update') : __('message.save'))." ".__('message.and_add'), ['class' => 'btn btn-success', 'name' => "btn-add"]) !!}--}}
 </div>

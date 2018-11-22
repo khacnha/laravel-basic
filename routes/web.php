@@ -10,31 +10,28 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function (){
-	return view('vendor.adminlte.welcome');
+Route::get('/', function () {
+    return view('vendor.adminlte.welcome');
 });
+
 Route::group(['middleware' => 'auth'], function () {
-    //    Route::get('/link1', function ()    {
-//        // Uses Auth Middleware
-//    });
+	//Route::auth();
+	//Route::get('/home', 'HomeController@index')->name('home');
 
-    //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
-    #adminlte_routes
-
-	Route::get('/home', 'HomeController@index')->name('home');
-
-	Route::get('admin', 'Admin\AdminController@index');
+//	Route::get('admin/give-role-permissions', 'Admin\AdminController@getGiveRolePermissions');
+//	Route::post('admin/give-role-permissions', 'Admin\AdminController@postGiveRolePermissions');
 	Route::resource('admin/roles', 'Admin\RolesController');
-	Route::resource('admin/permissions', 'Admin\PermissionsController');
+//	Route::resource('admin/permissions', 'Admin\PermissionsController');
+//	Route::get('admin/permissions-init', 'Admin\PermissionsController@getInitPermissions');
+//	Route::post('admin/permissions-init', 'Admin\PermissionsController@postInitPermissions');
 	Route::resource('admin/users', 'Admin\UsersController');
-	Route::resource('admin/pages', 'Admin\PagesController');
+//	Route::resource('admin/pages', 'Admin\PagesController');
 	Route::resource('admin/activitylogs', 'Admin\ActivityLogsController')->only([
 		'index', 'show', 'destroy'
 	]);
 	Route::resource('admin/settings', 'Admin\SettingsController');
-	Route::get('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@getGenerator']);
-	Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);
+//	Route::get('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@getGenerator']);
+//	Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);
+	Route::get('profile', 'Admin\UsersController@getProfile');
+	Route::post('profile', 'Admin\UsersController@postProfile');
 });
-
-Auth::routes();
-

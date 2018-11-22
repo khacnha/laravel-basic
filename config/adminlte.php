@@ -14,7 +14,7 @@ return [
     | See https://github.com/creativeorange/gravatar
     */
 
-    'gravatar' => true,
+    'gravatar' => false,
 
     /*
     |--------------------------------------------------------------------------

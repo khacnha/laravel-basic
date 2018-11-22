@@ -1,6 +1,6 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-Required:
+## Required:
 - AdminLTE template: https://github.com/acacha/adminlte-laravel
 - Laravel DebugBar: https://github.com/barryvdh/laravel-debugbar
 - Laravel IDE Helper: https://github.com/barryvdh/laravel-ide-helper
@@ -10,6 +10,14 @@ Required:
 - Image: intervention/image
 - Column-sortable: https://github.com/Kyslik/column-sortable
 
+## Hướng dẫn cài đặt
+1. clone dự án về máy
+2. Copy file mới tên là .env dựa trên file .env.example và thay đổi các tham số phù hợp
+3. Chạy lệnh update các package - <b>php composer.phar install</b>
+4. Chạy lệnh: <b>php artisan key:generate</b>  - để tạo application key
+5. Chạy lênh: <b>php artisan migrate</b> - để khởi tạo database ban đầu
+6. Chạy lệnh: <b>php artisan storage:link</b> - để tạo <b>symbolic link</b> đến từ folder <i>storage/app/public</i> đến folder <i>public/storage</i>
+7. Chạy lệnh: <b>php artisan db:seed</b> - để khởi tạo tải khoản và dữ liệu demo
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>

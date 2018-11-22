@@ -1,5 +1,16 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
+Required:
+- AdminLTE template: https://github.com/acacha/adminlte-laravel
+- Laravel DebugBar: https://github.com/barryvdh/laravel-debugbar
+- Laravel IDE Helper: https://github.com/barryvdh/laravel-ide-helper
+- php artisan adminlte:menu
+- php artisan adminlte:username
+- Laravel Admin: https://github.com/appzcoder/laravel-admin
+- Image: intervention/image
+- Column-sortable: https://github.com/Kyslik/column-sortable
+
+
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>

@@ -41,26 +41,6 @@ if (token) {
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
-
-/**
- * Vue is a modern JavaScript library for building interactive web interfaces
- * using reactive data binding and reusable components. Vue's API is clean
- * and simple, leaving you to focus on building your next great project.
- */
-
-window.Vue = require('vue')
-
-// Use trans function in Vue (equivalent to trans() Laravel Translations helper). See htmlheader.balde.php partial.
-Vue.prototype.trans = (key) => {
-  return _.get(window.trans, key, key)
-}
-
-// Laravel AdminLTE vue components
-Vue.component('register-form', require('./components/auth/RegisterForm.vue'))
-Vue.component('login-form', require('./components/auth/LoginForm.vue'))
-Vue.component('email-reset-password-form', require('./components/auth/EmailResetPasswordForm.vue'))
-Vue.component('reset-password-form', require('./components/auth/ResetPasswordForm.vue'))
-
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

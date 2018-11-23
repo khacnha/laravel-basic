@@ -44,7 +44,7 @@
                     </tr>
                 @foreach($%%crudName%% as $item)
                     <tr>
-                        <td class="text-center">{{ ++$index }} {{ $loop->iteration or $item->%%primaryKey%% }}</td>
+                        <td class="text-center">{{ ++$index }}</td>
                         %%formBodyHtml%%
                         <td>
                             <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $item->%%primaryKey%%) }}" title="{{ __('message.view') }}"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> {{ __('message.view') }}</button></a>

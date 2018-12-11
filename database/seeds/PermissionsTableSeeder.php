@@ -36,11 +36,12 @@ class PermissionsTableSeeder extends Seeder
 			//BỔ SUNG THÊM QUYỀN NẾU CÓ, chú ý key là ID của permission
 		];
 		$addPermissions = [];
-		foreach ($per as $name => $label){
+		foreach ($per as $id => $label){
 			if(\App\Permission::where('name',$label[0])->count() == 0)
 				$addPermissions[] = [
 					'name' => $label[0],
-					'label' => $label[1]
+					'label' => $label[1],
+					'id' => $id
 				];
 		}
 		if (count($addPermissions) > 0)

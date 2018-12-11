@@ -44,14 +44,19 @@ class UserProfiles extends Model
 	 * @return string
 	 */
 	public function uploadAndResizeAvatar($avatar){
-		if(empty($avatar)) return;
-		//\Storage::makeDirectory("public/demo");
+		if(empty($avatar)) return false;
+
 		if(!\Storage::disk(config('filesystems.disks.public.visibility'))->has(Config("settings.public_avatar"))){
 			\Storage::makeDirectory(config('filesystems.disks.public.visibility').Config("settings.public_avatar"));
 		}
 		//getting timestamp
 		$timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
-		$pathAvatar = Config("settings.public_avatar").$timestamp. '-' .$avatar->getClientOriginalName();
+
+		$fileNameOriginal = $avatar->getClientOriginalName();
+		$filename = pathinfo($fileNameOriginal, PATHINFO_FILENAME);
+		$extension = pathinfo($fileNameOriginal, PATHINFO_EXTENSION);
+
+		$pathAvatar = Config("settings.public_avatar").$timestamp. '-' .str_slug($filename).".$extension";
 		Image::make($avatar->getRealPath())->resize(100, 100)->save(public_path('/storage').$pathAvatar);
 
 		return config('filesystems.disks.public.visibility').$pathAvatar;

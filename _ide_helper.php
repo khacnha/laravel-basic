@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.13 on 2018-11-21 07:23:41.
+ * Generated for Laravel 5.7.16 on 2018-12-11 08:17:55.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3485,6 +3485,44 @@ namespace Illuminate\Support\Facades {
         public static function getQueuedCookies()
         {
             return \Illuminate\Cookie\CookieJar::getQueuedCookies();
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+            \Illuminate\Cookie\CookieJar::macro($name, $macro);
+        }
+        
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin)
+        {
+            \Illuminate\Cookie\CookieJar::mixin($mixin);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+            return \Illuminate\Cookie\CookieJar::hasMacro($name);
         }
          
     }
@@ -9047,7 +9085,7 @@ namespace Illuminate\Support\Facades {
          * Checks whether the method is cacheable or not.
          *
          * @see https://tools.ietf.org/html/rfc7231#section-4.2.3
-         * @return bool 
+         * @return bool True for GET and HEAD, false otherwise
          * @static 
          */ 
         public static function isMethodCacheable()
@@ -9691,6 +9729,16 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Http\Request::Illuminate\Foundation\Providers\{closure}($absolute);
         }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function allFilled($keys)
+        {
+            return \Illuminate\Http\Request::Kyslik\ColumnSortable\{closure}($keys);
+        }
          
     }
 
@@ -9961,14 +10009,14 @@ namespace Illuminate\Support\Facades {
     /**
      * 
      *
-     * @method static \Illuminate\Routing\Route get(string $uri, \Closure|array|string|null $action = null)
-     * @method static \Illuminate\Routing\Route post(string $uri, \Closure|array|string|null $action = null)
-     * @method static \Illuminate\Routing\Route put(string $uri, \Closure|array|string|null $action = null)
-     * @method static \Illuminate\Routing\Route delete(string $uri, \Closure|array|string|null $action = null)
-     * @method static \Illuminate\Routing\Route patch(string $uri, \Closure|array|string|null $action = null)
-     * @method static \Illuminate\Routing\Route options(string $uri, \Closure|array|string|null $action = null)
-     * @method static \Illuminate\Routing\Route any(string $uri, \Closure|array|string|null $action = null)
-     * @method static \Illuminate\Routing\Route match(array|string $methods, string $uri, \Closure|array|string|null $action = null)
+     * @method static \Illuminate\Routing\Route get(string $uri, \Closure|array|string|callable|null $action = null)
+     * @method static \Illuminate\Routing\Route post(string $uri, \Closure|array|string|callable|null $action = null)
+     * @method static \Illuminate\Routing\Route put(string $uri, \Closure|array|string|callable|null $action = null)
+     * @method static \Illuminate\Routing\Route delete(string $uri, \Closure|array|string|callable|null $action = null)
+     * @method static \Illuminate\Routing\Route patch(string $uri, \Closure|array|string|callable|null $action = null)
+     * @method static \Illuminate\Routing\Route options(string $uri, \Closure|array|string|callable|null $action = null)
+     * @method static \Illuminate\Routing\Route any(string $uri, \Closure|array|string|callable|null $action = null)
+     * @method static \Illuminate\Routing\Route match(array|string $methods, string $uri, \Closure|array|string|callable|null $action = null)
      * @method static \Illuminate\Routing\RouteRegistrar prefix(string  $prefix)
      * @method static \Illuminate\Routing\RouteRegistrar where(array  $where)
      * @method static \Illuminate\Routing\PendingResourceRegistration resource(string $name, string $controller, array $options = [])
@@ -9998,7 +10046,7 @@ namespace Illuminate\Support\Facades {
          * Register a new GET route with the router.
          *
          * @param string $uri
-         * @param \Closure|array|string|null $action
+         * @param \Closure|array|string|callable|null $action
          * @return \Illuminate\Routing\Route 
          * @static 
          */ 
@@ -10011,7 +10059,7 @@ namespace Illuminate\Support\Facades {
          * Register a new POST route with the router.
          *
          * @param string $uri
-         * @param \Closure|array|string|null $action
+         * @param \Closure|array|string|callable|null $action
          * @return \Illuminate\Routing\Route 
          * @static 
          */ 
@@ -10024,7 +10072,7 @@ namespace Illuminate\Support\Facades {
          * Register a new PUT route with the router.
          *
          * @param string $uri
-         * @param \Closure|array|string|null $action
+         * @param \Closure|array|string|callable|null $action
          * @return \Illuminate\Routing\Route 
          * @static 
          */ 
@@ -10037,7 +10085,7 @@ namespace Illuminate\Support\Facades {
          * Register a new PATCH route with the router.
          *
          * @param string $uri
-         * @param \Closure|array|string|null $action
+         * @param \Closure|array|string|callable|null $action
          * @return \Illuminate\Routing\Route 
          * @static 
          */ 
@@ -10050,7 +10098,7 @@ namespace Illuminate\Support\Facades {
          * Register a new DELETE route with the router.
          *
          * @param string $uri
-         * @param \Closure|array|string|null $action
+         * @param \Closure|array|string|callable|null $action
          * @return \Illuminate\Routing\Route 
          * @static 
          */ 
@@ -10063,7 +10111,7 @@ namespace Illuminate\Support\Facades {
          * Register a new OPTIONS route with the router.
          *
          * @param string $uri
-         * @param \Closure|array|string|null $action
+         * @param \Closure|array|string|callable|null $action
          * @return \Illuminate\Routing\Route 
          * @static 
          */ 
@@ -10076,7 +10124,7 @@ namespace Illuminate\Support\Facades {
          * Register a new route responding to all verbs.
          *
          * @param string $uri
-         * @param \Closure|array|string|null $action
+         * @param \Closure|array|string|callable|null $action
          * @return \Illuminate\Routing\Route 
          * @static 
          */ 
@@ -10088,7 +10136,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Register a new Fallback route with the router.
          *
-         * @param \Closure|array|string|null $action
+         * @param \Closure|array|string|callable|null $action
          * @return \Illuminate\Routing\Route 
          * @static 
          */ 
@@ -10143,7 +10191,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param array|string $methods
          * @param string $uri
-         * @param \Closure|array|string|null $action
+         * @param \Closure|array|string|callable|null $action
          * @return \Illuminate\Routing\Route 
          * @static 
          */ 
@@ -10247,7 +10295,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param array|string $methods
          * @param string $uri
-         * @param \Closure|array|string|null $action
+         * @param \Closure|array|string|callable|null $action
          * @return \Illuminate\Routing\Route 
          * @static 
          */ 
@@ -10592,7 +10640,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the currently dispatched route instance.
          *
-         * @return \Illuminate\Routing\Route 
+         * @return \Illuminate\Routing\Route|null 
          * @static 
          */ 
         public static function current()
@@ -10692,6 +10740,17 @@ namespace Illuminate\Support\Facades {
         public static function auth($options = array())
         {
             \Illuminate\Routing\Router::auth($options);
+        }
+        
+        /**
+         * Register the typical reset password routes for an application.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function resetPassword()
+        {
+            \Illuminate\Routing\Router::resetPassword();
         }
         
         /**
@@ -11075,6 +11134,7 @@ namespace Illuminate\Support\Facades {
      * @method static bool exists(string|array $key)
      * @method static bool has(string|array $key)
      * @method static mixed get(string $key, $default = null)
+     * @method static mixed pull(string $key, $default = null)
      * @method static void put(string|array $key, $value = null)
      * @method static string token()
      * @method static mixed remove(string $key)
@@ -12109,7 +12169,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $path
          * @param resource $resource
-         * @param mixed $options
+         * @param array $options
          * @return bool 
          * @throws \InvalidArgumentException If $resource is not a file handle.
          * @throws FileExistsException
@@ -12277,7 +12337,7 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Contracts\Routing\UrlGenerator setRootControllerNamespace(string $rootNamespace)
      * @method static string signedRoute(string $name, array $parameters = [], \DateTimeInterface|int $expiration = null)
      * @method static string temporarySignedRoute(string $name, \DateTimeInterface|int $expiration, array $parameters = [])
-     * @method static string hasValidSignature(\Illuminate\Http\Request $request)
+     * @method static string hasValidSignature(\Illuminate\Http\Request $request, bool $absolute)
      * @method static void defaults(array $defaults)
      * @see \Illuminate\Routing\UrlGenerator
      */ 
@@ -12545,13 +12605,13 @@ namespace Illuminate\Support\Facades {
         /**
          * Force the scheme for URLs.
          *
-         * @param string $schema
+         * @param string $scheme
          * @return void 
          * @static 
          */ 
-        public static function forceScheme($schema)
+        public static function forceScheme($scheme)
         {
-            \Illuminate\Routing\UrlGenerator::forceScheme($schema);
+            \Illuminate\Routing\UrlGenerator::forceScheme($scheme);
         }
         
         /**
@@ -13668,6 +13728,71 @@ namespace Illuminate\Support\Facades {
  
 }
 
+namespace Intervention\Image\Facades { 
+
+    /**
+     * 
+     *
+     */ 
+    class Image {
+        
+        /**
+         * Overrides configuration settings
+         *
+         * @param array $config
+         * @return self 
+         * @static 
+         */ 
+        public static function configure($config = array())
+        {
+            return \Intervention\Image\ImageManager::configure($config);
+        }
+        
+        /**
+         * Initiates an Image instance from different input types
+         *
+         * @param mixed $data
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function make($data)
+        {
+            return \Intervention\Image\ImageManager::make($data);
+        }
+        
+        /**
+         * Creates an empty image canvas
+         *
+         * @param int $width
+         * @param int $height
+         * @param mixed $background
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function canvas($width, $height, $background = null)
+        {
+            return \Intervention\Image\ImageManager::canvas($width, $height, $background);
+        }
+        
+        /**
+         * Create new cached image and run callback
+         * (requires additional package intervention/imagecache)
+         *
+         * @param \Closure $callback
+         * @param int $lifetime
+         * @param boolean $returnObj
+         * @return \Image 
+         * @static 
+         */ 
+        public static function cache($callback, $lifetime = null, $returnObj = false)
+        {
+            return \Intervention\Image\ImageManager::cache($callback, $lifetime, $returnObj);
+        }
+         
+    }
+ 
+}
+
 namespace Acacha\AdminLTETemplateLaravel\Facades { 
 
     /**
@@ -14544,6 +14669,2143 @@ namespace Creativeorange\Gravatar\Facades {
         public static function get($email, $configGroup = 'default')
         {
             return \Creativeorange\Gravatar\Gravatar::get($email, $configGroup);
+        }
+         
+    }
+ 
+}
+
+namespace Collective\Html { 
+
+    /**
+     * 
+     *
+     * @see \Collective\Html\FormBuilder
+     */ 
+    class FormFacade {
+        
+        /**
+         * Open up a new HTML form.
+         *
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function open($options = array())
+        {
+            return \Collective\Html\FormBuilder::open($options);
+        }
+        
+        /**
+         * Create a new model based form builder.
+         *
+         * @param mixed $model
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function model($model, $options = array())
+        {
+            return \Collective\Html\FormBuilder::model($model, $options);
+        }
+        
+        /**
+         * Set the model instance on the form builder.
+         *
+         * @param mixed $model
+         * @return void 
+         * @static 
+         */ 
+        public static function setModel($model)
+        {
+            \Collective\Html\FormBuilder::setModel($model);
+        }
+        
+        /**
+         * Get the current model instance on the form builder.
+         *
+         * @return mixed $model
+         * @static 
+         */ 
+        public static function getModel()
+        {
+            return \Collective\Html\FormBuilder::getModel();
+        }
+        
+        /**
+         * Close the current form.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function close()
+        {
+            return \Collective\Html\FormBuilder::close();
+        }
+        
+        /**
+         * Generate a hidden field with the current CSRF token.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function token()
+        {
+            return \Collective\Html\FormBuilder::token();
+        }
+        
+        /**
+         * Create a form label element.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @param bool $escape_html
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function label($name, $value = null, $options = array(), $escape_html = true)
+        {
+            return \Collective\Html\FormBuilder::label($name, $value, $options, $escape_html);
+        }
+        
+        /**
+         * Create a form input field.
+         *
+         * @param string $type
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function input($type, $name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::input($type, $name, $value, $options);
+        }
+        
+        /**
+         * Create a text input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function text($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::text($name, $value, $options);
+        }
+        
+        /**
+         * Create a password input field.
+         *
+         * @param string $name
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function password($name, $options = array())
+        {
+            return \Collective\Html\FormBuilder::password($name, $options);
+        }
+        
+        /**
+         * Create a range input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function range($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::range($name, $value, $options);
+        }
+        
+        /**
+         * Create a hidden input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function hidden($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::hidden($name, $value, $options);
+        }
+        
+        /**
+         * Create a search input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function search($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::search($name, $value, $options);
+        }
+        
+        /**
+         * Create an e-mail input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function email($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::email($name, $value, $options);
+        }
+        
+        /**
+         * Create a tel input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function tel($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::tel($name, $value, $options);
+        }
+        
+        /**
+         * Create a number input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function number($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::number($name, $value, $options);
+        }
+        
+        /**
+         * Create a date input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function date($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::date($name, $value, $options);
+        }
+        
+        /**
+         * Create a datetime input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function datetime($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::datetime($name, $value, $options);
+        }
+        
+        /**
+         * Create a datetime-local input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function datetimeLocal($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::datetimeLocal($name, $value, $options);
+        }
+        
+        /**
+         * Create a time input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function time($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::time($name, $value, $options);
+        }
+        
+        /**
+         * Create a url input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function url($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::url($name, $value, $options);
+        }
+        
+        /**
+         * Create a week input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function week($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::week($name, $value, $options);
+        }
+        
+        /**
+         * Create a file input field.
+         *
+         * @param string $name
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function file($name, $options = array())
+        {
+            return \Collective\Html\FormBuilder::file($name, $options);
+        }
+        
+        /**
+         * Create a textarea input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function textarea($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::textarea($name, $value, $options);
+        }
+        
+        /**
+         * Create a select box field.
+         *
+         * @param string $name
+         * @param array $list
+         * @param string|bool $selected
+         * @param array $selectAttributes
+         * @param array $optionsAttributes
+         * @param array $optgroupsAttributes
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function select($name, $list = array(), $selected = null, $selectAttributes = array(), $optionsAttributes = array(), $optgroupsAttributes = array())
+        {
+            return \Collective\Html\FormBuilder::select($name, $list, $selected, $selectAttributes, $optionsAttributes, $optgroupsAttributes);
+        }
+        
+        /**
+         * Create a select range field.
+         *
+         * @param string $name
+         * @param string $begin
+         * @param string $end
+         * @param string $selected
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function selectRange($name, $begin, $end, $selected = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::selectRange($name, $begin, $end, $selected, $options);
+        }
+        
+        /**
+         * Create a select year field.
+         *
+         * @param string $name
+         * @param string $begin
+         * @param string $end
+         * @param string $selected
+         * @param array $options
+         * @return mixed 
+         * @static 
+         */ 
+        public static function selectYear()
+        {
+            return \Collective\Html\FormBuilder::selectYear();
+        }
+        
+        /**
+         * Create a select month field.
+         *
+         * @param string $name
+         * @param string $selected
+         * @param array $options
+         * @param string $format
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function selectMonth($name, $selected = null, $options = array(), $format = '%B')
+        {
+            return \Collective\Html\FormBuilder::selectMonth($name, $selected, $options, $format);
+        }
+        
+        /**
+         * Get the select option for the given value.
+         *
+         * @param string $display
+         * @param string $value
+         * @param string $selected
+         * @param array $attributes
+         * @param array $optgroupAttributes
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function getSelectOption($display, $value, $selected, $attributes = array(), $optgroupAttributes = array())
+        {
+            return \Collective\Html\FormBuilder::getSelectOption($display, $value, $selected, $attributes, $optgroupAttributes);
+        }
+        
+        /**
+         * Create a checkbox input field.
+         *
+         * @param string $name
+         * @param mixed $value
+         * @param bool $checked
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function checkbox($name, $value = 1, $checked = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::checkbox($name, $value, $checked, $options);
+        }
+        
+        /**
+         * Create a radio button input field.
+         *
+         * @param string $name
+         * @param mixed $value
+         * @param bool $checked
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function radio($name, $value = null, $checked = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::radio($name, $value, $checked, $options);
+        }
+        
+        /**
+         * Create a HTML reset input element.
+         *
+         * @param string $value
+         * @param array $attributes
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function reset($value, $attributes = array())
+        {
+            return \Collective\Html\FormBuilder::reset($value, $attributes);
+        }
+        
+        /**
+         * Create a HTML image input element.
+         *
+         * @param string $url
+         * @param string $name
+         * @param array $attributes
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function image($url, $name = null, $attributes = array())
+        {
+            return \Collective\Html\FormBuilder::image($url, $name, $attributes);
+        }
+        
+        /**
+         * Create a month input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function month($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::month($name, $value, $options);
+        }
+        
+        /**
+         * Create a color input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function color($name, $value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::color($name, $value, $options);
+        }
+        
+        /**
+         * Create a submit button element.
+         *
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function submit($value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::submit($value, $options);
+        }
+        
+        /**
+         * Create a button element.
+         *
+         * @param string $value
+         * @param array $options
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function button($value = null, $options = array())
+        {
+            return \Collective\Html\FormBuilder::button($value, $options);
+        }
+        
+        /**
+         * Create a datalist box field.
+         *
+         * @param string $id
+         * @param array $list
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function datalist($id, $list = array())
+        {
+            return \Collective\Html\FormBuilder::datalist($id, $list);
+        }
+        
+        /**
+         * Get the ID attribute for a field name.
+         *
+         * @param string $name
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */ 
+        public static function getIdAttribute($name, $attributes)
+        {
+            return \Collective\Html\FormBuilder::getIdAttribute($name, $attributes);
+        }
+        
+        /**
+         * Get the value that should be assigned to the field.
+         *
+         * @param string $name
+         * @param string $value
+         * @return mixed 
+         * @static 
+         */ 
+        public static function getValueAttribute($name, $value = null)
+        {
+            return \Collective\Html\FormBuilder::getValueAttribute($name, $value);
+        }
+        
+        /**
+         * Take Request in fill process
+         *
+         * @param bool $consider
+         * @static 
+         */ 
+        public static function considerRequest($consider = true)
+        {
+            return \Collective\Html\FormBuilder::considerRequest($consider);
+        }
+        
+        /**
+         * Get a value from the session's old input.
+         *
+         * @param string $name
+         * @return mixed 
+         * @static 
+         */ 
+        public static function old($name)
+        {
+            return \Collective\Html\FormBuilder::old($name);
+        }
+        
+        /**
+         * Determine if the old input is empty.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function oldInputIsEmpty()
+        {
+            return \Collective\Html\FormBuilder::oldInputIsEmpty();
+        }
+        
+        /**
+         * Get the session store implementation.
+         *
+         * @return \Illuminate\Contracts\Session\Session $session
+         * @static 
+         */ 
+        public static function getSessionStore()
+        {
+            return \Collective\Html\FormBuilder::getSessionStore();
+        }
+        
+        /**
+         * Set the session store implementation.
+         *
+         * @param \Illuminate\Contracts\Session\Session $session
+         * @return $this 
+         * @static 
+         */ 
+        public static function setSessionStore($session)
+        {
+            return \Collective\Html\FormBuilder::setSessionStore($session);
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+            \Collective\Html\FormBuilder::macro($name, $macro);
+        }
+        
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin)
+        {
+            \Collective\Html\FormBuilder::mixin($mixin);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+            return \Collective\Html\FormBuilder::hasMacro($name);
+        }
+        
+        /**
+         * Dynamically handle calls to the class.
+         *
+         * @param string $method
+         * @param array $parameters
+         * @return mixed 
+         * @throws \BadMethodCallException
+         * @static 
+         */ 
+        public static function macroCall($method, $parameters)
+        {
+            return \Collective\Html\FormBuilder::macroCall($method, $parameters);
+        }
+        
+        /**
+         * Register a custom component.
+         *
+         * @param $name
+         * @param $view
+         * @param array $signature
+         * @return void 
+         * @static 
+         */ 
+        public static function component($name, $view, $signature)
+        {
+            \Collective\Html\FormBuilder::component($name, $view, $signature);
+        }
+        
+        /**
+         * Check if a component is registered.
+         *
+         * @param $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasComponent($name)
+        {
+            return \Collective\Html\FormBuilder::hasComponent($name);
+        }
+        
+        /**
+         * Dynamically handle calls to the class.
+         *
+         * @param string $method
+         * @param array $parameters
+         * @return \Illuminate\Contracts\View\View|mixed 
+         * @throws \BadMethodCallException
+         * @static 
+         */ 
+        public static function componentCall($method, $parameters)
+        {
+            return \Collective\Html\FormBuilder::componentCall($method, $parameters);
+        }
+         
+    }
+
+    /**
+     * 
+     *
+     * @see \Collective\Html\HtmlBuilder
+     */ 
+    class HtmlFacade {
+        
+        /**
+         * Convert an HTML string to entities.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */ 
+        public static function entities($value)
+        {
+            return \Collective\Html\HtmlBuilder::entities($value);
+        }
+        
+        /**
+         * Convert entities to HTML characters.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */ 
+        public static function decode($value)
+        {
+            return \Collective\Html\HtmlBuilder::decode($value);
+        }
+        
+        /**
+         * Generate a link to a JavaScript file.
+         *
+         * @param string $url
+         * @param array $attributes
+         * @param bool $secure
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function script($url, $attributes = array(), $secure = null)
+        {
+            return \Collective\Html\HtmlBuilder::script($url, $attributes, $secure);
+        }
+        
+        /**
+         * Generate a link to a CSS file.
+         *
+         * @param string $url
+         * @param array $attributes
+         * @param bool $secure
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function style($url, $attributes = array(), $secure = null)
+        {
+            return \Collective\Html\HtmlBuilder::style($url, $attributes, $secure);
+        }
+        
+        /**
+         * Generate an HTML image element.
+         *
+         * @param string $url
+         * @param string $alt
+         * @param array $attributes
+         * @param bool $secure
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function image($url, $alt = null, $attributes = array(), $secure = null)
+        {
+            return \Collective\Html\HtmlBuilder::image($url, $alt, $attributes, $secure);
+        }
+        
+        /**
+         * Generate a link to a Favicon file.
+         *
+         * @param string $url
+         * @param array $attributes
+         * @param bool $secure
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function favicon($url, $attributes = array(), $secure = null)
+        {
+            return \Collective\Html\HtmlBuilder::favicon($url, $attributes, $secure);
+        }
+        
+        /**
+         * Generate a HTML link.
+         *
+         * @param string $url
+         * @param string $title
+         * @param array $attributes
+         * @param bool $secure
+         * @param bool $escape
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function link($url, $title = null, $attributes = array(), $secure = null, $escape = true)
+        {
+            return \Collective\Html\HtmlBuilder::link($url, $title, $attributes, $secure, $escape);
+        }
+        
+        /**
+         * Generate a HTTPS HTML link.
+         *
+         * @param string $url
+         * @param string $title
+         * @param array $attributes
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function secureLink($url, $title = null, $attributes = array())
+        {
+            return \Collective\Html\HtmlBuilder::secureLink($url, $title, $attributes);
+        }
+        
+        /**
+         * Generate a HTML link to an asset.
+         *
+         * @param string $url
+         * @param string $title
+         * @param array $attributes
+         * @param bool $secure
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function linkAsset($url, $title = null, $attributes = array(), $secure = null)
+        {
+            return \Collective\Html\HtmlBuilder::linkAsset($url, $title, $attributes, $secure);
+        }
+        
+        /**
+         * Generate a HTTPS HTML link to an asset.
+         *
+         * @param string $url
+         * @param string $title
+         * @param array $attributes
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function linkSecureAsset($url, $title = null, $attributes = array())
+        {
+            return \Collective\Html\HtmlBuilder::linkSecureAsset($url, $title, $attributes);
+        }
+        
+        /**
+         * Generate a HTML link to a named route.
+         *
+         * @param string $name
+         * @param string $title
+         * @param array $parameters
+         * @param array $attributes
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function linkRoute($name, $title = null, $parameters = array(), $attributes = array())
+        {
+            return \Collective\Html\HtmlBuilder::linkRoute($name, $title, $parameters, $attributes);
+        }
+        
+        /**
+         * Generate a HTML link to a controller action.
+         *
+         * @param string $action
+         * @param string $title
+         * @param array $parameters
+         * @param array $attributes
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function linkAction($action, $title = null, $parameters = array(), $attributes = array())
+        {
+            return \Collective\Html\HtmlBuilder::linkAction($action, $title, $parameters, $attributes);
+        }
+        
+        /**
+         * Generate a HTML link to an email address.
+         *
+         * @param string $email
+         * @param string $title
+         * @param array $attributes
+         * @param bool $escape
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function mailto($email, $title = null, $attributes = array(), $escape = true)
+        {
+            return \Collective\Html\HtmlBuilder::mailto($email, $title, $attributes, $escape);
+        }
+        
+        /**
+         * Obfuscate an e-mail address to prevent spam-bots from sniffing it.
+         *
+         * @param string $email
+         * @return string 
+         * @static 
+         */ 
+        public static function email($email)
+        {
+            return \Collective\Html\HtmlBuilder::email($email);
+        }
+        
+        /**
+         * Generates non-breaking space entities based on number supplied.
+         *
+         * @param int $num
+         * @return string 
+         * @static 
+         */ 
+        public static function nbsp($num = 1)
+        {
+            return \Collective\Html\HtmlBuilder::nbsp($num);
+        }
+        
+        /**
+         * Generate an ordered list of items.
+         *
+         * @param array $list
+         * @param array $attributes
+         * @return \Illuminate\Support\HtmlString|string 
+         * @static 
+         */ 
+        public static function ol($list, $attributes = array())
+        {
+            return \Collective\Html\HtmlBuilder::ol($list, $attributes);
+        }
+        
+        /**
+         * Generate an un-ordered list of items.
+         *
+         * @param array $list
+         * @param array $attributes
+         * @return \Illuminate\Support\HtmlString|string 
+         * @static 
+         */ 
+        public static function ul($list, $attributes = array())
+        {
+            return \Collective\Html\HtmlBuilder::ul($list, $attributes);
+        }
+        
+        /**
+         * Generate a description list of items.
+         *
+         * @param array $list
+         * @param array $attributes
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function dl($list, $attributes = array())
+        {
+            return \Collective\Html\HtmlBuilder::dl($list, $attributes);
+        }
+        
+        /**
+         * Build an HTML attribute string from an array.
+         *
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */ 
+        public static function attributes($attributes)
+        {
+            return \Collective\Html\HtmlBuilder::attributes($attributes);
+        }
+        
+        /**
+         * Obfuscate a string to prevent spam-bots from sniffing it.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */ 
+        public static function obfuscate($value)
+        {
+            return \Collective\Html\HtmlBuilder::obfuscate($value);
+        }
+        
+        /**
+         * Generate a meta tag.
+         *
+         * @param string $name
+         * @param string $content
+         * @param array $attributes
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function meta($name, $content, $attributes = array())
+        {
+            return \Collective\Html\HtmlBuilder::meta($name, $content, $attributes);
+        }
+        
+        /**
+         * Generate an html tag.
+         *
+         * @param string $tag
+         * @param mixed $content
+         * @param array $attributes
+         * @return \Illuminate\Support\HtmlString 
+         * @static 
+         */ 
+        public static function tag($tag, $content, $attributes = array())
+        {
+            return \Collective\Html\HtmlBuilder::tag($tag, $content, $attributes);
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+            \Collective\Html\HtmlBuilder::macro($name, $macro);
+        }
+        
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin)
+        {
+            \Collective\Html\HtmlBuilder::mixin($mixin);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+            return \Collective\Html\HtmlBuilder::hasMacro($name);
+        }
+        
+        /**
+         * Dynamically handle calls to the class.
+         *
+         * @param string $method
+         * @param array $parameters
+         * @return mixed 
+         * @throws \BadMethodCallException
+         * @static 
+         */ 
+        public static function macroCall($method, $parameters)
+        {
+            return \Collective\Html\HtmlBuilder::macroCall($method, $parameters);
+        }
+        
+        /**
+         * Register a custom component.
+         *
+         * @param $name
+         * @param $view
+         * @param array $signature
+         * @return void 
+         * @static 
+         */ 
+        public static function component($name, $view, $signature)
+        {
+            \Collective\Html\HtmlBuilder::component($name, $view, $signature);
+        }
+        
+        /**
+         * Check if a component is registered.
+         *
+         * @param $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasComponent($name)
+        {
+            return \Collective\Html\HtmlBuilder::hasComponent($name);
+        }
+        
+        /**
+         * Dynamically handle calls to the class.
+         *
+         * @param string $method
+         * @param array $parameters
+         * @return \Illuminate\Contracts\View\View|mixed 
+         * @throws \BadMethodCallException
+         * @static 
+         */ 
+        public static function componentCall($method, $parameters)
+        {
+            return \Collective\Html\HtmlBuilder::componentCall($method, $parameters);
+        }
+         
+    }
+ 
+}
+
+namespace Spatie\Menu\Laravel\Facades { 
+
+    /**
+     * 
+     *
+     */ 
+    class Menu {
+        
+        /**
+         * Set all relevant children active based on the current request's URL.
+         * 
+         * /, /about, /contact => request to /about will set the about link active.
+         * 
+         * /en, /en/about, /en/contact => request to /en won't set /en active if the
+         *                                request root is set to /en.
+         *
+         * @param string $requestRoot If the link's URL is an exact match with the
+         *                            request root, the link won't be set active.
+         *                            This behavior is to avoid having home links
+         *                            active on every request.
+         * @return $this 
+         * @static 
+         */ 
+        public static function setActiveFromRequest($requestRoot = '/')
+        {
+            return \Spatie\Menu\Laravel\Menu::setActiveFromRequest($requestRoot);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $path
+         * @param string $text
+         * @param mixed $parameters
+         * @param bool|null $secure
+         * @return $this 
+         * @static 
+         */ 
+        public static function url($path, $text, $parameters = array(), $secure = null)
+        {
+            return \Spatie\Menu\Laravel\Menu::url($path, $text, $parameters, $secure);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|array $action
+         * @param string $text
+         * @param mixed $parameters
+         * @param bool $absolute
+         * @return $this 
+         * @static 
+         */ 
+        public static function action($action, $text, $parameters = array(), $absolute = true)
+        {
+            return \Spatie\Menu\Laravel\Menu::action($action, $text, $parameters, $absolute);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $name
+         * @param string $text
+         * @param mixed $parameters
+         * @param bool $absolute
+         * @return $this 
+         * @static 
+         */ 
+        public static function route($name, $text, $parameters = array(), $absolute = true)
+        {
+            return \Spatie\Menu\Laravel\Menu::route($name, $text, $parameters, $absolute);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $name
+         * @param array $data
+         * @return $this 
+         * @static 
+         */ 
+        public static function view($name, $data = array())
+        {
+            return \Spatie\Menu\Laravel\Menu::view($name, $data);
+        }
+        
+        /**
+         * 
+         *
+         * @param bool $condition
+         * @param string $path
+         * @param string $text
+         * @param array $parameters
+         * @param bool|null $secure
+         * @return $this 
+         * @static 
+         */ 
+        public static function urlIf($condition, $path, $text, $parameters = array(), $secure = null)
+        {
+            return \Spatie\Menu\Laravel\Menu::urlIf($condition, $path, $text, $parameters, $secure);
+        }
+        
+        /**
+         * 
+         *
+         * @param bool $condition
+         * @param string|array $action
+         * @param string $text
+         * @param array $parameters
+         * @param bool $absolute
+         * @return $this 
+         * @static 
+         */ 
+        public static function actionIf($condition, $action, $text, $parameters = array(), $absolute = true)
+        {
+            return \Spatie\Menu\Laravel\Menu::actionIf($condition, $action, $text, $parameters, $absolute);
+        }
+        
+        /**
+         * 
+         *
+         * @param bool $condition
+         * @param string $name
+         * @param string $text
+         * @param array $parameters
+         * @param bool $absolute
+         * @return $this 
+         * @static 
+         */ 
+        public static function routeIf($condition, $name, $text, $parameters = array(), $absolute = true)
+        {
+            return \Spatie\Menu\Laravel\Menu::routeIf($condition, $name, $text, $parameters, $absolute);
+        }
+        
+        /**
+         * 
+         *
+         * @param $condition
+         * @param string $name
+         * @param array $data
+         * @return $this 
+         * @static 
+         */ 
+        public static function viewIf($condition, $name, $data = null)
+        {
+            return \Spatie\Menu\Laravel\Menu::viewIf($condition, $name, $data);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|array $authorization
+         * @param \Spatie\Menu\Item $item
+         * @return $this 
+         * @static 
+         */ 
+        public static function addIfCan($authorization, $item)
+        {
+            return \Spatie\Menu\Laravel\Menu::addIfCan($authorization, $item);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|array $authorization
+         * @param string $url
+         * @param string $text
+         * @return $this 
+         * @static 
+         */ 
+        public static function linkIfCan($authorization, $url, $text)
+        {
+            return \Spatie\Menu\Laravel\Menu::linkIfCan($authorization, $url, $text);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|array $authorization
+         * @param string $html
+         * @return \Spatie\Menu\Laravel\Menu 
+         * @static 
+         */ 
+        public static function htmlIfCan($authorization, $html)
+        {
+            return \Spatie\Menu\Laravel\Menu::htmlIfCan($authorization, $html);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|array $authorization
+         * @param callable|\Spatie\Menu\Menu|\Spatie\Menu\Item $header
+         * @param callable|\Spatie\Menu\Menu|null $menu
+         * @return $this 
+         * @static 
+         */ 
+        public static function submenuIfCan($authorization, $header, $menu = null)
+        {
+            return \Spatie\Menu\Laravel\Menu::submenuIfCan($authorization, $header, $menu);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|array $authorization
+         * @param string $path
+         * @param string $text
+         * @param array $parameters
+         * @param bool|null $secure
+         * @return $this 
+         * @static 
+         */ 
+        public static function urlIfCan($authorization, $path, $text, $parameters = array(), $secure = null)
+        {
+            return \Spatie\Menu\Laravel\Menu::urlIfCan($authorization, $path, $text, $parameters, $secure);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|array $authorization
+         * @param string|array $action
+         * @param string $text
+         * @param array $parameters
+         * @param bool $absolute
+         * @return $this 
+         * @static 
+         */ 
+        public static function actionIfCan($authorization, $action, $text, $parameters = array(), $absolute = true)
+        {
+            return \Spatie\Menu\Laravel\Menu::actionIfCan($authorization, $action, $text, $parameters, $absolute);
+        }
+        
+        /**
+         * 
+         *
+         * @param string|array $authorization
+         * @param string $name
+         * @param string $text
+         * @param array $parameters
+         * @param bool $absolute
+         * @return $this 
+         * @static 
+         */ 
+        public static function routeIfCan($authorization, $name, $text, $parameters = array(), $absolute = true)
+        {
+            return \Spatie\Menu\Laravel\Menu::routeIfCan($authorization, $name, $text, $parameters, $absolute);
+        }
+        
+        /**
+         * 
+         *
+         * @param $authorization
+         * @param string $name
+         * @param array $data
+         * @return $this 
+         * @internal param $condition
+         * @static 
+         */ 
+        public static function viewIfCan($authorization, $name, $data = null)
+        {
+            return \Spatie\Menu\Laravel\Menu::viewIfCan($authorization, $name, $data);
+        }
+        
+        /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function toHtml()
+        {
+            return \Spatie\Menu\Laravel\Menu::toHtml();
+        }
+        
+        /**
+         * Create a new menu, optionally prefilled with items.
+         *
+         * @param array $items
+         * @return static 
+         * @static 
+         */ 
+        public static function new($items = array())
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::new($items);
+        }
+        
+        /**
+         * Build a new menu from an array. The callback receives a menu instance as
+         * the accumulator, the array item as the second parameter, and the item's
+         * key as the third.
+         *
+         * @param array|\Iterator $items
+         * @param callable $callback
+         * @param \Spatie\Menu\Menu|null $initial
+         * @return static 
+         * @static 
+         */ 
+        public static function build($items, $callback, $initial = null)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::build($items, $callback, $initial);
+        }
+        
+        /**
+         * Fill a menu from an array. The callback receives a menu instance as
+         * the accumulator, the array item as the second parameter, and the item's
+         * key as the third.
+         *
+         * @param array|\Iterator $items
+         * @param callable $callback
+         * @return static 
+         * @static 
+         */ 
+        public static function fill($items, $callback)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::fill($items, $callback);
+        }
+        
+        /**
+         * Add an item to the menu. This also applies all registered filters to the
+         * item.
+         *
+         * @param \Spatie\Menu\Item $item
+         * @return $this 
+         * @static 
+         */ 
+        public static function add($item)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::add($item);
+        }
+        
+        /**
+         * Add an item to the menu if a (non-strict) condition is met.
+         *
+         * @param bool $condition
+         * @param \Spatie\Menu\Item $item
+         * @return $this 
+         * @static 
+         */ 
+        public static function addIf($condition, $item)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::addIf($condition, $item);
+        }
+        
+        /**
+         * Shortcut function to add a plain link to the menu.
+         *
+         * @param string $url
+         * @param string $text
+         * @return $this 
+         * @static 
+         */ 
+        public static function link($url, $text)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::link($url, $text);
+        }
+        
+        /**
+         * Shortcut function to add an empty item to the menu.
+         *
+         * @return $this 
+         * @static 
+         */ 
+        public static function empty()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::empty();
+        }
+        
+        /**
+         * Add a link to the menu if a (non-strict) condition is met.
+         *
+         * @param bool $condition
+         * @param string $url
+         * @param string $text
+         * @return $this 
+         * @static 
+         */ 
+        public static function linkIf($condition, $url, $text)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::linkIf($condition, $url, $text);
+        }
+        
+        /**
+         * Shortcut function to add raw html to the menu.
+         *
+         * @param string $html
+         * @param array $parentAttributes
+         * @return $this 
+         * @static 
+         */ 
+        public static function html($html, $parentAttributes = array())
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::html($html, $parentAttributes);
+        }
+        
+        /**
+         * Add a chunk of html if a (non-strict) condition is met.
+         *
+         * @param bool $condition
+         * @param string $html
+         * @param array $parentAttributes
+         * @return $this 
+         * @static 
+         */ 
+        public static function htmlIf($condition, $html, $parentAttributes = array())
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::htmlIf($condition, $html, $parentAttributes);
+        }
+        
+        /**
+         * 
+         *
+         * @param callable|\Spatie\Menu\Menu|\Spatie\Menu\Item $header
+         * @param callable|\Spatie\Menu\Menu|null $menu
+         * @return $this 
+         * @static 
+         */ 
+        public static function submenu($header, $menu = null)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::submenu($header, $menu);
+        }
+        
+        /**
+         * 
+         *
+         * @param bool $condition
+         * @param callable|\Spatie\Menu\Menu|\Spatie\Menu\Item $header
+         * @param callable|\Spatie\Menu\Menu|null $menu
+         * @return $this 
+         * @static 
+         */ 
+        public static function submenuIf($condition, $header, $menu = null)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::submenuIf($condition, $header, $menu);
+        }
+        
+        /**
+         * Iterate over all the items and apply a callback. If you typehint the
+         * item parameter in the callable, it wil only be applied to items of that
+         * type.
+         *
+         * @param callable $callable
+         * @return $this 
+         * @static 
+         */ 
+        public static function each($callable)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::each($callable);
+        }
+        
+        /**
+         * Register a filter to the menu. When an item is added, all filters will be
+         * applied to the item. If you typehint the item parameter in the callable, it
+         * will only be applied to items of that type.
+         *
+         * @param callable $callable
+         * @return $this 
+         * @static 
+         */ 
+        public static function registerFilter($callable)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::registerFilter($callable);
+        }
+        
+        /**
+         * Apply a callable to all existing items, and register it as a filter so it
+         * will get applied to all new items too. If you typehint the item parameter
+         * in the callable, it wil only be applied to items of that type.
+         *
+         * @param callable $callable
+         * @return $this 
+         * @static 
+         */ 
+        public static function applyToAll($callable)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::applyToAll($callable);
+        }
+        
+        /**
+         * Wrap the entire menu in an html element. This is another level of
+         * wrapping above the `wrapperTag`.
+         *
+         * @param string $element
+         * @param array $attributes
+         * @return $this 
+         * @static 
+         */ 
+        public static function wrap($element, $attributes = array())
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::wrap($element, $attributes);
+        }
+        
+        /**
+         * Determine whether the menu is active.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function isActive()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::isActive();
+        }
+        
+        /**
+         * A menu can be active but not exact-active.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function isExactActive()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::isExactActive();
+        }
+        
+        /**
+         * Set multiple items in the menu as active based on a callable that filters
+         * through items. If you typehint the item parameter in the callable, it will
+         * only be applied to items of that type.
+         *
+         * @param callable|string $urlOrCallable
+         * @param string $root
+         * @return $this 
+         * @static 
+         */ 
+        public static function setActive($urlOrCallable, $root = '/')
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setActive($urlOrCallable, $root);
+        }
+        
+        /**
+         * Set the class name that will be used on exact-active items for this menu.
+         *
+         * @param string $class
+         * @return $this 
+         * @static 
+         */ 
+        public static function setExactActiveClass($class)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setExactActiveClass($class);
+        }
+        
+        /**
+         * Set all relevant children active based on the current request's URL.
+         * 
+         * /, /about, /contact => request to /about will set the about link active.
+         * 
+         * /en, /en/about, /en/contact => request to /en won't set /en active if the
+         *                                request root is set to /en.
+         *
+         * @param string $url The current request url.
+         * @param string $root If the link's URL is an exact match with the request
+         *                     root, the link won't be set active. This behavior is
+         *                     to avoid having home links active on every request.
+         * @return $this 
+         * @static 
+         */ 
+        public static function setActiveFromUrl($url, $root = '/')
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setActiveFromUrl($url, $root);
+        }
+        
+        /**
+         * 
+         *
+         * @param callable $callable
+         * @return $this 
+         * @static 
+         */ 
+        public static function setActiveFromCallable($callable)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setActiveFromCallable($callable);
+        }
+        
+        /**
+         * Set the class name that will be used on active items for this menu.
+         *
+         * @param string $class
+         * @return $this 
+         * @static 
+         */ 
+        public static function setActiveClass($class)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setActiveClass($class);
+        }
+        
+        /**
+         * Add a class to all items in the menu.
+         *
+         * @param string $class
+         * @return $this 
+         * @static 
+         */ 
+        public static function addItemClass($class)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::addItemClass($class);
+        }
+        
+        /**
+         * Set an attribute on all items in the menu.
+         *
+         * @param string $attribute
+         * @param string $value
+         * @return $this 
+         * @static 
+         */ 
+        public static function setItemAttribute($attribute, $value = '')
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setItemAttribute($attribute, $value);
+        }
+        
+        /**
+         * Add a parent class to all items in the menu.
+         *
+         * @param string $class
+         * @return $this 
+         * @static 
+         */ 
+        public static function addItemParentClass($class)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::addItemParentClass($class);
+        }
+        
+        /**
+         * Add a parent attribute to all items in the menu.
+         *
+         * @param string $attribute
+         * @param string $value
+         * @return $this 
+         * @static 
+         */ 
+        public static function setItemParentAttribute($attribute, $value = '')
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setItemParentAttribute($attribute, $value);
+        }
+        
+        /**
+         * Set tag for items wrapper.
+         *
+         * @param string|null $wrapperTagName
+         * @return $this 
+         * @static 
+         */ 
+        public static function setWrapperTag($wrapperTagName = null)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setWrapperTag($wrapperTagName);
+        }
+        
+        /**
+         * Set tag for items wrapper.
+         *
+         * @param string|null $wrapperTagName
+         * @return $this 
+         * @static 
+         */ 
+        public static function withoutWrapperTag()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::withoutWrapperTag();
+        }
+        
+        /**
+         * Set the parent tag name.
+         *
+         * @param string|null $parentTagName
+         * @return $this 
+         * @static 
+         */ 
+        public static function setParentTag($parentTagName = null)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setParentTag($parentTagName);
+        }
+        
+        /**
+         * Render items without a parent tag.
+         *
+         * @return $this 
+         * @static 
+         */ 
+        public static function withoutParentTag()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::withoutParentTag();
+        }
+        
+        /**
+         * Set whether active class should (also) be on link.
+         *
+         * @param $activeClassOnLink
+         * @return $this 
+         * @static 
+         */ 
+        public static function setActiveClassOnLink($activeClassOnLink = true)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setActiveClassOnLink($activeClassOnLink);
+        }
+        
+        /**
+         * Set whether active class should (also) be on parent.
+         *
+         * @param $activeClassOnParent
+         * @return $this 
+         * @static 
+         */ 
+        public static function setActiveClassOnParent($activeClassOnParent = true)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setActiveClassOnParent($activeClassOnParent);
+        }
+        
+        /**
+         * 
+         *
+         * @param bool $condition
+         * @param callable $callable
+         * @return $this 
+         * @static 
+         */ 
+        public static function if($condition, $callable)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::if($condition, $callable);
+        }
+        
+        /**
+         * Create a empty blueprint of the menu (copies `filters` and `activeClass`).
+         *
+         * @return static 
+         * @static 
+         */ 
+        public static function blueprint()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::blueprint();
+        }
+        
+        /**
+         * Render the menu.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function render()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::render();
+        }
+        
+        /**
+         * The amount of items in the menu.
+         *
+         * @return int 
+         * @static 
+         */ 
+        public static function count()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::count();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getIterator()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::getIterator();
+        }
+        
+        /**
+         * 
+         *
+         * @param string $attribute
+         * @param string $value
+         * @return $this 
+         * @static 
+         */ 
+        public static function setAttribute($attribute, $value = '')
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setAttribute($attribute, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param array $attributes
+         * @return $this 
+         * @static 
+         */ 
+        public static function setAttributes($attributes)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setAttributes($attributes);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $class
+         * @return $this 
+         * @static 
+         */ 
+        public static function addClass($class)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::addClass($class);
+        }
+        
+        /**
+         * Return an array of attributes to apply on the parent. This generally means
+         * the attributes that should be applied on the <li> tag.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function parentAttributes()
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::parentAttributes();
+        }
+        
+        /**
+         * 
+         *
+         * @param string $attribute
+         * @param string $value
+         * @return $this 
+         * @static 
+         */ 
+        public static function setParentAttribute($attribute, $value = '')
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setParentAttribute($attribute, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @param array $attributes
+         * @return $this 
+         * @static 
+         */ 
+        public static function setParentAttributes($attributes)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::setParentAttributes($attributes);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $class
+         * @return $this 
+         * @static 
+         */ 
+        public static function addParentClass($class)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::addParentClass($class);
+        }
+        
+        /**
+         * Prepend the anchor with a string of html on render.
+         *
+         * @param string $prepend
+         * @return $this 
+         * @static 
+         */ 
+        public static function prepend($prepend)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::prepend($prepend);
+        }
+        
+        /**
+         * Prepend the text with a string of html on render if a certain condition is
+         * met.
+         *
+         * @param bool $condition
+         * @param string $prepend
+         * @return $this 
+         * @static 
+         */ 
+        public static function prependIf($condition, $prepend)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::prependIf($condition, $prepend);
+        }
+        
+        /**
+         * Append a text of html to the menu on render.
+         *
+         * @param string $append
+         * @return $this 
+         * @static 
+         */ 
+        public static function append($append)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::append($append);
+        }
+        
+        /**
+         * Append the text with a string of html on render if a certain condition is
+         * met.
+         *
+         * @param bool $condition
+         * @param string $append
+         * @return static 
+         * @static 
+         */ 
+        public static function appendIf($condition, $append)
+        {
+            //Method inherited from \Spatie\Menu\Menu            
+            return \Spatie\Menu\Laravel\Menu::appendIf($condition, $append);
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+            \Spatie\Menu\Laravel\Menu::macro($name, $macro);
+        }
+        
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin)
+        {
+            \Spatie\Menu\Laravel\Menu::mixin($mixin);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+            return \Spatie\Menu\Laravel\Menu::hasMacro($name);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function adminlteMenu()
+        {
+            return \Spatie\Menu\Laravel\Menu::{closure}();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function adminlteSubmenu($submenuName)
+        {
+            return \Spatie\Menu\Laravel\Menu::{closure}($submenuName);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function sidebar($user, $arLink)
+        {
+            return \Spatie\Menu\Laravel\Menu::{closure}($user, $arLink);
         }
          
     }
@@ -15763,6 +18025,35 @@ namespace  {
             }
          
             /**
+             * Add a "where in raw" clause for integer values to the query.
+             *
+             * @param string $column
+             * @param \Illuminate\Contracts\Support\Arrayable|array $values
+             * @param string $boolean
+             * @param bool $not
+             * @return $this 
+             * @static 
+             */ 
+            public static function whereIntegerInRaw($column, $values, $boolean = 'and', $not = false)
+            {    
+                return \Illuminate\Database\Query\Builder::whereIntegerInRaw($column, $values, $boolean, $not);
+            }
+         
+            /**
+             * Add a "where not in raw" clause for integer values to the query.
+             *
+             * @param string $column
+             * @param \Illuminate\Contracts\Support\Arrayable|array $values
+             * @param string $boolean
+             * @return $this 
+             * @static 
+             */ 
+            public static function whereIntegerNotInRaw($column, $values, $boolean = 'and')
+            {    
+                return \Illuminate\Database\Query\Builder::whereIntegerNotInRaw($column, $values, $boolean);
+            }
+         
+            /**
              * Add a "where null" clause to the query.
              *
              * @param string $column
@@ -16923,11 +19214,19 @@ namespace  {
 
     class View extends \Illuminate\Support\Facades\View {}
 
+    class Image extends \Intervention\Image\Facades\Image {}
+
     class AdminLTE extends \Acacha\AdminLTETemplateLaravel\Facades\AdminLTE {}
 
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
 
     class Gravatar extends \Creativeorange\Gravatar\Facades\Gravatar {}
+
+    class Form extends \Collective\Html\FormFacade {}
+
+    class Html extends \Collective\Html\HtmlFacade {}
+
+    class Menu extends \Spatie\Menu\Laravel\Facades\Menu {}
  
 }
 

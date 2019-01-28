@@ -35,6 +35,7 @@ class PermissionsTableSeeder extends Seeder
 
 			//BỔ SUNG THÊM QUYỀN NẾU CÓ, chú ý key là ID của permission
 		];
+		DB::table( 'permissions' )->delete();
 		$addPermissions = [];
 		foreach ($per as $id => $label){
 			if(\App\Permission::where('name',$label[0])->count() == 0)

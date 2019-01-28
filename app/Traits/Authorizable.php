@@ -11,9 +11,12 @@ trait Authorizable
      */
     private $sameMethod = [
         'create' => 'store',
+	    'export' => 'index',
         'edit' => 'update',
         'getGiveRolePermissions' => 'postGiveRolePermissions',
         'getProfile' => 'postProfile',
+        'changePassword' => 'postProfile',
+	    'cancel' => 'update',
     ];
     /**
      * Override of callAction to perform the authorization before it calls the action
@@ -24,6 +27,14 @@ trait Authorizable
      */
     public function callAction($method, $parameters)
     {
+    	//Loại trừ check quyền permission cho trường hợp thỏa điều kiện sau:
+	    // - Là gọi từ API.
+	    // - Và ko yêu cầu đăng nhập.
+    	$route = \Route::getCurrentRoute();
+    	if(isset($route->action['middleware']) && in_array('api', $route->action['middleware']) && !\Auth::check()){
+    		return parent::callAction($method, $parameters);
+	    }
+	    //Kiểm tra phân quyền Permission theo Controller và Method
         $currentAction = \Route::currentRouteAction();
         list($controllerFull, ) = explode('@', $currentAction);
         $controller = preg_replace('/.*\\\/', '', $controllerFull);
